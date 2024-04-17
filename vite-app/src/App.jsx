@@ -1,16 +1,19 @@
 import React, { useRef } from 'react';
 
 const App = () => {
+  // Create refs for input fields
   const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const nameValue = nameRef.current.value.trim();
     const emailValue = emailRef.current.value;
     const passwordValue = passwordRef.current.value;
 
+    // Validate name input
     if (!nameValue) {
       alert('Please enter your name.');
       return;
@@ -21,7 +24,29 @@ const App = () => {
       return;
     }
 
-    // Custom submission handling logic here
+    // Validate email input
+    if (!emailValue) {
+      alert('Please enter your email.');
+      return;
+    }
+
+    if (emailValue.length < 5) {
+      alert('Email must be at least 5 characters.');
+      return;
+    }
+
+    // Validate password input
+    if (!passwordValue) {
+      alert('Please enter your password.');
+      return;
+    }
+
+    if (passwordValue.length < 6) {
+      alert('Password must be at least 6 characters.');
+      return;
+    }
+
+    // Custom submission handling logic here (e.g., API calls, state updates)
     console.log('Form submitted:', {
       name: nameValue,
       email: emailValue,
